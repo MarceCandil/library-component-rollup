@@ -17,9 +17,15 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: Clean Cache
+        run: npm cache clean --force
       - run: rm -rf node_modules/
-      - run: npm ci
-      - run: npm run build
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+        env:
+          CI: ''
 
   unit-test:
     needs: build
