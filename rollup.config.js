@@ -29,7 +29,7 @@ export default [
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
       // allows you to process css modules
-      postcss({modules: true}),
+      postcss({modules: true, extract: true }),
       terser(),
     ],
   },
