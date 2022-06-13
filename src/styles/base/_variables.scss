@@ -1,0 +1,20 @@
+:root {
+  --primaryYellow: #f4ba00;
+  --primaryBlue: #27afc5;
+  --error: #e14161;
+  --white: #ffffff;
+  --secondary: #27afc5;
+
+  /* font families */
+  --font-primary: "Open Sans", Arial, sans-serif;
+  --font-secondary: "Poppins", "Open Sans", Arial, sans-serif;
+  
+  /* base values */
+  --text-base-size: 1em;
+  --text-scale-ratio: 1.25;
+  --text-expanded: 0.05em;
+
+  /* line-height */
+  --heading-line-height: 1.2;
+  --body-line-height: 1.6;
+}
