@@ -3,6 +3,8 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
+import copy from "rollup-plugin-copy";
+import visualizer from 'rollup-plugin-visualizer';
 import { terser } from "rollup-plugin-terser";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
@@ -16,6 +18,7 @@ export default [
         file: packageJson.main,
         format: "cjs",
         sourcemap: true,
+        name: "component-library"
       },
       {
         file: packageJson.module,
@@ -25,7 +28,9 @@ export default [
     ],
     plugins: [
       peerDepsExternal(),
+      // locate and bundle third-party dependencies in node_modules
       resolve(),
+      // convert CommonJS modules into ES6
       commonjs(),
       typescript({ 
         tsconfig: "./tsconfig.json",
@@ -36,15 +41,29 @@ export default [
           /\.stories.((js|jsx|ts|tsx|mdx))$/,
         ] 
       }),
-      // allows you to process css modules
-      postcss({modules: true, extract: true }),
+      postcss(),
+      // minify and compress output JavaScript files
       terser(),
+      // analyze the bundle output
+      visualizer({
+        filename: 'bundle-analysis.html',
+        open: true,
+      }),
+      copy({
+        targets: [
+          {
+            src: "src/styles/variables.scss",
+            dest: "build",
+            rename: "variables.scss"
+          }
+        ]
+      })
     ],
   },
   {
-    input: "dist/esm/types/index.d.ts",
-    output: [{ file: "dist/index.d.ts", format: "esm" }],
+    input: "build/types/index.d.ts",
+    output: [{ file: "build/index.d.ts", format: "esm" }],
     plugins: [dts()],
-    external: [/\.(css|less|scss)$/],
+    external: [/\.(css|less|scss)$/, 'react', 'react-dom'],
   },
 ];

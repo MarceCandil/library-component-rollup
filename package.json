@@ -3,9 +3,10 @@
   "private": false,
   "version": "1.0.2",
   "description": "Rollup library components",
-  "main": "dist/cjs/index.js",
   "scripts": {
-    "build": "rollup -c",
+    "prebuild": "rm -rf build",
+    "build": "npm run prebuild && rollup -c",
+    "rollup-watch": "rollup -c -w",
     "test": "jest",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx,json}'",
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
@@ -57,10 +58,12 @@
     "jest-environment-jsdom": "^28.1.1",
     "prettier": "^2.6.2",
     "rollup": "^2.75.6",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-visualizer": "^5.6.0",
     "sass": "^1.52.2",
     "sass-loader": "^13.0.0",
     "style-loader": "^3.3.1",
@@ -69,11 +72,13 @@
     "typescript": "^4.7.3"
   },
   "peerDependencies": {
-    "react": "^18.1.0"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
-  "module": "dist/esm/index.js",
+  "main": "build/index.js",
+  "module": "build/index.esm.js",
   "files": [
-    "dist"
+    "build"
   ],
-  "types": "dist/index.d.ts"
+  "types": "build/index.d.ts"
 }
