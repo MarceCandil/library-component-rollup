@@ -1,7 +1,7 @@
 {
   "name": "@marcecandil/library-component-rollup",
   "private": false,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Rollup library components",
   "scripts": {
     "prebuild": "rm -rf build",
