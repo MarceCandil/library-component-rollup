@@ -3,7 +3,7 @@ import { ButtonProps } from './Button.types';
 import './Button.scss';
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const { backgroundColor, size = 'large', label } = props;
+  const { backgroundColor, size = 'small', label } = props;
 
   return (
     <button
