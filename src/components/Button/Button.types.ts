@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react';
+import type { AriaButtonProps } from '@react-types/button';
 
 export type BtnSize = 'default' | 'small' | 'medium';
 export enum BtnSizeEnum {
@@ -7,7 +7,7 @@ export enum BtnSizeEnum {
   medium = 'medium',
 }
 
-export interface ButtonProps {
+export interface OwnProps {
   /**
    * What background color to use
    */
@@ -20,9 +20,6 @@ export interface ButtonProps {
    * Button contents
    */
   label?: string;
-  /**
-   * Optional click handler
-   */
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-  className?: string;
 }
+
+export type ButtonProps = OwnProps & AriaButtonProps
