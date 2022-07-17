@@ -1,12 +1,14 @@
-import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import image from '@rollup/plugin-image';
+import json from "@rollup/plugin-json";
+import resolve from '@rollup/plugin-node-resolve';
 import typescript from "@rollup/plugin-typescript";
-import dts from "rollup-plugin-dts";
-import postcss from "rollup-plugin-postcss";
 import copy from "rollup-plugin-copy";
-import visualizer from 'rollup-plugin-visualizer';
-import { terser } from "rollup-plugin-terser";
+import dts from "rollup-plugin-dts";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import postcss from "rollup-plugin-postcss";
+import { terser } from "rollup-plugin-terser";
+import visualizer from 'rollup-plugin-visualizer';
 
 const packageJson = require("./package.json");
 
@@ -18,7 +20,7 @@ export default [
         file: packageJson.main,
         format: "cjs",
         sourcemap: true,
-        name: "component-library"
+        name: "library-component-rollup"
       },
       {
         file: packageJson.module,
@@ -27,11 +29,30 @@ export default [
       },
     ],
     plugins: [
-      peerDepsExternal(),
-      // locate and bundle third-party dependencies in node_modules
-      resolve(),
       // convert CommonJS modules into ES6
+      peerDepsExternal(),
+      resolve(),
+      // locate and bundle third-party dependencies in node_modules
       commonjs(),
+      json({compact: true}),
+      postcss(),
+      // minify and compress output JavaScript files
+      terser(),
+      // analyze the bundle output
+      visualizer({
+        filename: 'bundle-analysis.html',
+        open: false,
+      }),
+      copy({
+        targets: [
+          {
+            src: "src/styles",
+            dest: "build",
+            rename: "styles"
+          }
+        ]
+      }),
+      image(),
       typescript({ 
         tsconfig: "./tsconfig.json",
         exclude: [
@@ -41,28 +62,16 @@ export default [
           /\.stories.((js|jsx|ts|tsx|mdx))$/,
         ] 
       }),
-      postcss(),
-      // minify and compress output JavaScript files
-      terser(),
-      // analyze the bundle output
-      visualizer({
-        filename: 'bundle-analysis.html',
-        open: true,
-      }),
-      copy({
-        targets: [
-          {
-            src: "src/styles/variables.scss",
-            dest: "build",
-            rename: "variables.scss"
-          }
-        ]
-      })
     ],
   },
   {
     input: "build/types/index.d.ts",
-    output: [{ file: "build/index.d.ts", format: "esm" }],
+    output: [
+      { 
+        file: "build/index.d.ts", 
+        format: "esm",
+      }
+    ],
     plugins: [dts()],
     external: [/\.(css|less|scss)$/, 'react', 'react-dom'],
   },

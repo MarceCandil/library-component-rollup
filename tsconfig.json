@@ -15,10 +15,9 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
     "paths": {
-      "@components/*": ["components/*"],
-      "@styles/*": ["styles/*"],
-      "@assets/*": ["assets/*"]
+      "*": ["src/*"],
+      "components/*": ["src/components/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "src/custom.d.ts"]
 }

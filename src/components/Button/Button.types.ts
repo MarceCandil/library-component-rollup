@@ -1,5 +1,12 @@
 import { MouseEventHandler } from 'react';
 
+export type BtnSize = 'default' | 'small' | 'medium';
+export enum BtnSizeEnum {
+  default = 'default',
+  small = 'small',
+  medium = 'medium',
+}
+
 export interface ButtonProps {
   /**
    * What background color to use
@@ -8,13 +15,14 @@ export interface ButtonProps {
   /**
    * How large should the button be?
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: BtnSize;
   /**
    * Button contents
    */
-  label: string;
+  label?: string;
   /**
    * Optional click handler
    */
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  className?: string;
 }

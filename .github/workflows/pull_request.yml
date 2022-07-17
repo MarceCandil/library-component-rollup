@@ -1,0 +1,55 @@
+name: Pull Request Check
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  linter:
+    name: 'Linter'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Clean Cache
+        run: yarn cache clean --force
+      - run: rm -rf node_modules/
+      - name: Install dependencies
+        run: yarn
+      - name: Run linter
+        run: yarn lint
+
+  unit-test:
+    needs: linter
+    name: 'Unit Test'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: yarn
+      - name: Run tests
+        run: yarn test
+
+  build:
+    needs: unit-test
+    name: 'Frontend Build'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Clean Cache
+        run: yarn cache clean --force
+      - run: rm -rf node_modules/
+      - name: Install dependencies
+        run: yarn
+      - name: Build
+        run: yarn build
+        env:
+          CI: ''
