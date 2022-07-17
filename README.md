@@ -1,6 +1,6 @@
 # Rollup Library Components
 
-### Component library template with Rollup, React and Storybook.
+### Component library template with Rollup, React, Storybook and React Aria.
 
 - Node Version: v16.15.0
 - Npm Version: v8.5.5
@@ -11,5 +11,5 @@ The library runs on top of Storybook (Tool for creating isolated UI components),
 You simply need to run the following Script.
 
 ```js
-  npm run storybook
+  yarn storybook
 ```
