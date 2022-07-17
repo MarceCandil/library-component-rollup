@@ -1,26 +1,26 @@
+import {useButton} from '@react-aria/button';
 import * as React from 'react';
 
-import { ButtonProps } from './Button.types';
+import type { ButtonProps } from './Button.types';
+
+
 import './Button.scss';
 
-const Button: React.FC<ButtonProps> = (props) => {
+const Button = (props: ButtonProps) => {
   const {
     label = 'Button',
     size = 'default',
-    className,
     backgroundColor,
   } = props;
+  let ref = React.useRef<HTMLButtonElement>(null);
+  let { buttonProps, isPressed } = useButton(props, ref);
 
   return (
     <button
-      type='button'
-      data-testid="button"
-      className={[
-        'button',
-        `${size ? `size-${size}` : ''}`,
-        `${className ? className : ''}`,
-      ].join(' ')}
-      style={{ background: backgroundColor }}
+      ref={ref}
+      style={{ background: isPressed ? 'red' : backgroundColor, }}
+      className={['button', `${size ? `size-${size}` : ''}`].join(' ')}
+      {...buttonProps}
     >
       <span className='btn-text'>{label}</span>
     </button>
