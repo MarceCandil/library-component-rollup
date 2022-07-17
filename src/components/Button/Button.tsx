@@ -13,12 +13,12 @@ const Button = (props: ButtonProps) => {
     backgroundColor,
   } = props;
   let ref = React.useRef<HTMLButtonElement>(null);
-  let { buttonProps } = useButton(props, ref);
+  let { buttonProps, isPressed } = useButton(props, ref);
 
   return (
     <button
       ref={ref}
-      style={{ background: backgroundColor }}
+      style={{ background: isPressed ? 'red' : backgroundColor, }}
       className={['button', `${size ? `size-${size}` : ''}`].join(' ')}
       {...buttonProps}
     >
