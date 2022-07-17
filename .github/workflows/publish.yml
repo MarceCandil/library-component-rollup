@@ -6,7 +6,7 @@ name: Deploy package
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
