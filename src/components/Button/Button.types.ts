@@ -22,4 +22,4 @@ export interface OwnProps {
   label?: string;
 }
 
-export type ButtonProps = OwnProps & AriaButtonProps
+export type ButtonProps = OwnProps & AriaButtonProps;
