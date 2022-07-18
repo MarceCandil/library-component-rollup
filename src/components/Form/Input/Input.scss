@@ -1,0 +1,15 @@
+.input-container {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+
+  .description {
+    font-size: 16px;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 16px;
+  }
+}
