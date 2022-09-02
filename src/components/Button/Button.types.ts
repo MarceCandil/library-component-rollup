@@ -7,7 +7,7 @@ export enum BtnSizeEnum {
   medium = 'medium',
 }
 
-export interface OwnProps {
+export interface OwnProps extends HTMLButtonElement {
   /**
    * What background color to use
    */

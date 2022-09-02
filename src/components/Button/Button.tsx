@@ -5,8 +5,12 @@ import type { ButtonProps } from './Button.types';
 
 import './Button.scss';
 
-const Button = (props: ButtonProps) => {
-  const { label = 'Button', size = 'default', backgroundColor } = props;
+const Button: React.FC<ButtonProps> = ({
+  label = 'Button', 
+  size = 'default', 
+  backgroundColor,
+  ...props
+}) => {
   let ref = React.useRef<HTMLButtonElement>(null);
   let { buttonProps, isPressed } = useButton(props, ref);
 
