@@ -1,5 +1,6 @@
 {
   "name": "@marcecandil/library-component-rollup",
+  "version": "1.0.5",
   "description": "Rollup library components",
   "keywords": [
     "Rollup",
@@ -32,7 +33,6 @@
     }
   ],
   "private": false,
-  "version": "1.0.5",
   "scripts": {
     "prebuild": "rm -rf build",
     "build": "yarn prebuild && rollup -c",
@@ -75,7 +75,7 @@
     "@types/jest": "^28.1.1",
     "@types/react": "^18.0.17",
     "@typescript-eslint/eslint-plugin": "^5.36.0",
-    "@typescript-eslint/parser": "^5.36.0",
+    "@typescript-eslint/parser": "^5.38.1",
     "babel-jest": "^29.0.1",
     "babel-loader": "^8.2.5",
     "cross-env": "^7.0.3",
