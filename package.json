@@ -1,7 +1,11 @@
 {
   "name": "@marcecandil/library-component-rollup",
   "version": "1.0.5",
+  "private": false,
   "description": "Rollup library components",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "keywords": [
     "Rollup",
     "boilerplate",
@@ -32,7 +36,6 @@
       "url": "https://github.com/marcecandil"
     }
   ],
-  "private": false,
   "scripts": {
     "prebuild": "rm -rf build",
     "build": "yarn prebuild && rollup -c",
@@ -44,9 +47,6 @@
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
     "storybook": "cross-env TS_NODE_PROJECT=.storybook/tsconfig.json start-storybook -p 6006",
     "build-storybook": "build-storybook"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",
