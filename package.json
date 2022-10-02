@@ -1,5 +1,6 @@
 {
   "name": "@marcecandil/library-component-rollup",
+  "version": "1.0.5",
   "description": "Rollup library components",
   "keywords": [
     "Rollup",
@@ -32,7 +33,6 @@
     }
   ],
   "private": false,
-  "version": "1.0.5",
   "scripts": {
     "prebuild": "rm -rf build",
     "build": "yarn prebuild && rollup -c",
