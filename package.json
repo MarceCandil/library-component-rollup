@@ -1,6 +1,6 @@
 {
   "name": "@marcecandil/library-component-rollup",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "private": false,
   "description": "Rollup library components",
   "publishConfig": {
