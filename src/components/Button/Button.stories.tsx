@@ -17,6 +17,6 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   backgroundColor: 'white',
-  label: 'Test',
+  children: 'Button Test',
   onPress: () => alert('Button pressed!'),
 };

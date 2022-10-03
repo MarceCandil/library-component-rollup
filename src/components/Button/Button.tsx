@@ -5,12 +5,7 @@ import type { ButtonProps } from './Button.types';
 
 import './Button.scss';
 
-const Button: React.FC<ButtonProps> = ({
-  label = 'Button', 
-  size = 'default', 
-  backgroundColor,
-  ...props
-}) => {
+const Button: React.FC<ButtonProps> = ({ size = 'default', backgroundColor, ...props }) => {
   let ref = React.useRef<HTMLButtonElement>(null);
   let { buttonProps, isPressed } = useButton(props, ref);
 
@@ -21,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
       className={['button', `${size ? `size-${size}` : ''}`].join(' ')}
       {...buttonProps}
     >
-      <span className='btn-text'>{label}</span>
+      {props.children}
     </button>
   );
 };

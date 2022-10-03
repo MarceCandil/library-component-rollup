@@ -1,4 +1,5 @@
 import type { AriaButtonProps } from '@react-types/button';
+import { ButtonHTMLAttributes } from 'react';
 
 export type BtnSize = 'default' | 'small' | 'medium';
 export enum BtnSizeEnum {
@@ -7,7 +8,7 @@ export enum BtnSizeEnum {
   medium = 'medium',
 }
 
-export interface OwnProps extends HTMLButtonElement {
+export interface OwnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * What background color to use
    */
@@ -16,10 +17,6 @@ export interface OwnProps extends HTMLButtonElement {
    * How large should the button be?
    */
   size?: BtnSize;
-  /**
-   * Button contents
-   */
-  label?: string;
 }
 
 export type ButtonProps = OwnProps & AriaButtonProps;
