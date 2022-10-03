@@ -21,7 +21,6 @@ const config: Config.InitialOptions = {
     "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
     "\\.(css|less|scss)$": "identity-obj-proxy",
     "components/(.*)": '<rootDir>src/components/$1',
-    "hooks/(.*)": '<rootDir>src/hooks/$1',
   },
   resetMocks: true,
 };

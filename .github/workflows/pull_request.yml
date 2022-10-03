@@ -6,6 +6,7 @@ on:
 
 jobs:
   linter:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     name: 'Linter'
     runs-on: ubuntu-latest
     steps:

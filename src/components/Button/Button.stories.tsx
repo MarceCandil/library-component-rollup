@@ -8,7 +8,7 @@ export default {
   title: 'Components/Button',
   component: Button,
   argTypes: {
-    size: { control: { type: 'select', options: BtnSizeEnum } }
+    size: { control: { type: 'select', options: BtnSizeEnum } },
   },
 } as ComponentMeta<typeof Button>;
 
@@ -17,7 +17,6 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   backgroundColor: 'white',
-  label: 'Test',
-  onPress: () => alert('Button pressed!')
+  children: 'Button Test',
+  onPress: () => alert('Button pressed!'),
 };
-
