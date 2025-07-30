@@ -54,7 +54,7 @@
     "@babel/preset-react": "^7.17.12",
     "@babel/preset-typescript": "^7.17.12",
     "@react-aria/button": "^3.6.1",
-    "@react-aria/textfield": "^3.7.0",
+    "@react-aria/textfield": "^3.18.0",
     "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-image": "^3.0.3",
