@@ -56,7 +56,7 @@
     "@react-aria/button": "^3.6.1",
     "@react-aria/textfield": "^3.18.0",
     "@rollup/plugin-alias": "^5.1.1",
-    "@rollup/plugin-commonjs": "^22.0.2",
+    "@rollup/plugin-commonjs": "^28.0.8",
     "@rollup/plugin-image": "^3.0.3",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
